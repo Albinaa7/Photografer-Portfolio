@@ -55,7 +55,7 @@ const About = () => {
             <main style={styles.main}>
                 <img src="/images/Aboutpage.jpg" alt="Nature" style={styles.image} />
                 <div style={styles.content}>
-                    <h1 style={styles.h1}>In Focus</h1>
+                    <h1 style={styles.h1}>In Focus🩶</h1>
                     <p style={styles.p}>
                         I have a strong drive to acquire uniqueness in my images by capturing the beauty of natural surroundings and its wildlife through black and white photography. By exploring photography in a way that would inspire people around the world to travel and visit wild areas, I aim to share the imagery that has been captured.
                     </p>
@@ -76,6 +76,9 @@ const About = () => {
                     </p>
                     <p style={styles.p}>
                         Currently, I work as a resident photographer at a renowned nature reserve, sharing the beauty of the wild through my lens.
+                    </p>
+                    <p style={styles.p}> 
+                      Prepare to embark on a visual journey filled with awe-inspiring landscapes and captivating moments frozen in time. Whether you're a nature enthusiast, an aspiring photographer, or simply someone who appreciates the beauty of our planet, you're sure to find something that resonates with you here. 
                     </p>
                 </div>
             </main>
