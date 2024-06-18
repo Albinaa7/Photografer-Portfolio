@@ -38,7 +38,7 @@ const styles = {
   photoCard: {
     position: 'relative',
     width: '100%',
-    height: '430px', // Set height explicitly
+    height: '400px', // Set height explicitly
     overflow: 'hidden',
     borderRadius: '25px',
     border: '3px solid #ddd',
@@ -85,7 +85,7 @@ const Home = () => {
       <main style={styles.main}>
         <h1 style={styles.h1}>Welcome to the Photographer's Portfolio</h1>
         <p style={styles.p}>
-          Explore a collection of breathtaking images that capture the beauty of our natural world. From the peaks of majestic mountains to the serenity of a tranquil lake, each photograph tells a story of adventure and wonder.🩶
+          Explore a collection of breathtaking images that capture the beauty of our natural world. From the peaks of majestic and beautiful mountains to the serenity of a tranquil lake, each photograph tells a story of adventure and wonder.🩶
           Beauty is in the eye of the beholder🩶
         </p>
         <div style={styles.gallery}>
@@ -112,3 +112,8 @@ const Home = () => {
 }
 
 export default Home;
+
+
+
+
+

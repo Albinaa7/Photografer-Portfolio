@@ -1,10 +1,24 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
+import { Link } from 'react-router-dom'; // Import Link component for navigation
 import Navbar from '../components/Navbar';
 import Footer from '../components/Footer';
 
 const Contact = () => {
     const [formData, setFormData] = useState({ name: '', email: '', message: '' });
     const [reviews, setReviews] = useState([]);
+
+    useEffect(() => {
+        // Load reviews from localStorage on component mount
+        const storedReviews = localStorage.getItem('reviews');
+        if (storedReviews) {
+            setReviews(JSON.parse(storedReviews));
+        }
+    }, []);
+
+    // Save reviews to localStorage whenever reviews state changes
+    useEffect(() => {
+        localStorage.setItem('reviews', JSON.stringify(reviews));
+    }, [reviews]);
 
     const handleChange = (e) => {
         setFormData({ ...formData, [e.target.name]: e.target.value });
@@ -19,8 +33,8 @@ const Contact = () => {
             email: formData.email,
             message: formData.message,
         };
-        setReviews([...reviews, newReview]);
 
+        setReviews([...reviews, newReview]);
         setFormData({ name: '', email: '', message: '' });
     };
 
@@ -36,7 +50,12 @@ const Contact = () => {
                     <h1 style={styles.h1}>Contact</h1>
                     <p style={styles.p}>
                         Should you wish to contact me, you're welcome to complete the form provided or email me at marco@example.com. Additionally, you can reach out through my social media channels.
-                        <br /><br />
+                        <Link to="https://www.instagram.com/rosscouperphoto/" style={styles.instagramLink}>
+                            <img src="/images/instagram.jpg" alt="Instagram" style={styles.instagramIcon} />
+                        </Link>
+                    </p>
+
+                    <p style={styles.p}>
                         As I dedicate a significant portion of my time to capturing the beauty and remarkable moments of nature, my responses may experience delays. Nevertheless, send me a message, and I'll get back to you promptly once I'm back at my computer.
                     </p>
 
@@ -74,7 +93,7 @@ const Contact = () => {
             <Footer />
         </div>
     );
-}
+};
 
 const styles = {
     container: {
@@ -145,7 +164,7 @@ const styles = {
         minHeight: '100px'
     },
     button: {
-        backgroundColor: '#28a745',
+        backgroundColor: '#333',
         color: '#fff',
         border: 'none',
         padding: '10px 20px',
@@ -161,7 +180,7 @@ const styles = {
         maxHeight: '400px',
         overflowY: 'auto',
         backgroundColor: '#fff',
-        padding: '20px',
+        padding: '10px',
         borderRadius: '10px',
         boxShadow: '0 4px 8px rgba(0, 0, 0, 0.1)'
     },
@@ -171,13 +190,23 @@ const styles = {
         marginBottom: '10px'
     },
     deleteButton: {
-        backgroundColor: '#dc3545',
-        color: '#fff',
+        backgroundColor: '#333',
+        color: '#FFFFFF',
         border: 'none',
         padding: '5px 10px',
         borderRadius: '5px',
         cursor: 'pointer',
         fontSize: '0.9em'
+    },
+    instagramLink: {
+        display: 'inline-block',
+        verticalAlign: 'middle',
+        marginLeft: '10px', // Adjust margin as needed for spacing
+    },
+    instagramIcon: {
+        width: '27px',
+        height: '28px',
+        cursor: 'pointer'
     }
 };
 

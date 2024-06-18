@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
-import Navbar from '../components/Navbar';
 import Footer from '../components/Footer';
 import PhotoCard from '../components/PhotoCard';
+import Navbar from '../components/Navbar';
 
 const photos = [
     { id: 1, title: 'Sunset', url: '/images/Sunset.jpg', category: 'Nature' },
@@ -22,15 +22,15 @@ const photos = [
     { id: 16, title: 'daisies', url: '/images/daisies.jpg', category: 'Flowers' },
     { id: 17, title: 'butterfly', url: '/images/butterfly.jpg', category: 'Birds' },
     { id: 18, title: 'Eagle', url: '/images/Eagle.jpg', category: 'Birds' },
-    { id: 19, title: 'Dog', url: '/images/Dog.jpg',category: 'Animals' },
-    { id: 20, title: 'Jaguar', url: '/images/Jaguar.jpg',category: 'Animals' },
-    { id: 21, title: 'Rhinos', url: '/images/Rhinos.jpg',category: 'Animals' },
-    { id: 22, title: 'Little tiger', url: '/images/Little tiger.jpg',category: 'Animals' },
-    { id: 23, title: 'Hummingbird', url: '/images/Hummingbird.jpg',category: 'Birds' },
-    { id: 24, title: 'sunflowers', url: '/images/sunflowers.jpg',category: 'Flowers' },
-    { id: 25, title: 'Lily', url: '/images/Lily.jpg',category: 'Flowers' },
-    { id: 26, title: 'White roses', url: '/images/White roses.jpg',category: 'Flowers' },
-    { id: 27, title: 'cherry blossoms', url: '/images/cherry blossoms.jpg',category: 'Flowers' },
+    { id: 19, title: 'Dog', url: '/images/Dog.jpg', category: 'Animals' },
+    { id: 20, title: 'Jaguar', url: '/images/Jaguar.jpg', category: 'Animals' },
+    { id: 21, title: 'Rhinos', url: '/images/Rhinos.jpg', category: 'Animals' },
+    { id: 22, title: 'Little tiger', url: '/images/Little tiger.jpg', category: 'Animals' },
+    { id: 23, title: 'Hummingbird', url: '/images/Hummingbird.jpg', category: 'Birds' },
+    { id: 24, title: 'sunflowers', url: '/images/sunflowers.jpg', category: 'Flowers' },
+    { id: 25, title: 'Lily', url: '/images/Lily.jpg', category: 'Flowers' },
+    { id: 26, title: 'White roses', url: '/images/White roses.jpg', category: 'Flowers' },
+    { id: 27, title: 'cherry blossoms', url: '/images/cherry blossoms.jpg', category: 'Flowers' },
 ];
 
 const Gallery = () => {
@@ -52,9 +52,14 @@ const Gallery = () => {
         ));
     };
 
-    const sortPhotos = (photos) => {
-        const filteredPhotos = sortCriteria === 'All' ? photos : photos.filter(photo => photo.category === sortCriteria);
-        return filteredPhotos.sort((a, b) => a.title.localeCompare(b.title));
+    const sortPhotos = () => {
+        return photos.filter(photo => {
+            if (sortCriteria === 'All') {
+                return true;
+            } else {
+                return photo.category === sortCriteria;
+            }
+        }).sort((a, b) => a.title.localeCompare(b.title));
     };
 
     const handleSortChange = (criteria) => {
@@ -67,7 +72,7 @@ const Gallery = () => {
             <main style={{ padding: '20px' }}>
                 <h1>Gallery</h1>
                 <div className="gallery" style={{ display: 'flex', flexWrap: 'wrap', gap: '20px', overflowY: 'auto', maxHeight: 'calc(100vh - 200px)' }}>
-                    {sortPhotos(photos).map(photo => (
+                    {sortPhotos().map(photo => (
                         <PhotoCard key={photo.id} photo={photo} addToFavorites={addToFavorites} />
                     ))}
                 </div>

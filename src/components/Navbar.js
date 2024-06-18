@@ -1,7 +1,7 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 
-const Navbar = ({ onSortChange }) => {
+const Navbar = ({ onSortChange, onLogout, isLoggedIn }) => {
     return (
         <nav>
             <ul>
@@ -18,6 +18,11 @@ const Navbar = ({ onSortChange }) => {
                     </div>
                 </li>
                 <li><Link to="/contact">Contact</Link></li>
+                {!isLoggedIn ? (
+                    <li><Link to="/register">Register</Link></li>
+                ) : (
+                    <li><button onClick={onLogout}>Logout</button></li>
+                )}
             </ul>
         </nav>
     );
